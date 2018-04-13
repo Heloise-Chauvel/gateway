@@ -2,9 +2,7 @@ import com.google.common.base.Charsets;
 import org.apache.commons.codec.binary.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Date;
+
 
 public class CryptageAes{
 
