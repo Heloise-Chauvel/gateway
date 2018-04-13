@@ -4,10 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,9 +24,9 @@ public class UserController {
 
 
     @POST
-    public Response createUser(Utilisateur user) throws MalformedURLException{
-        URL groupeSarah = new URL("http://93c43331.ngrok.io/");
-        HttpURLConnection connection = new HttpURLConnection(groupeSarah);
+    public Response createUser(Utilisateur user) throws MalformedURLException, IOException{
+        URL grpeSarah = new URL(groupeSarah);
+        HttpURLConnection connection = (HttpURLConnection) grpeSarah.openConnection();
         //Cryptage du mot ed passe
         String mdp="";
         user.setPassword(mdp);
