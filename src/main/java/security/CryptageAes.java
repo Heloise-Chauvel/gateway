@@ -1,3 +1,5 @@
+package security;
+
 import com.google.common.base.Charsets;
 import org.apache.commons.codec.binary.Base64;
 import javax.crypto.Cipher;
