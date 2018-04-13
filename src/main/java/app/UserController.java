@@ -10,16 +10,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-import entities.Utilisateur;
-import security.CryptageAes;
-import services.UserService;
 
 @Path("/api/users")
 @Produces(MediaType.APPLICATION_JSON)
@@ -37,6 +33,12 @@ public class UserController {
         HttpURLConnection connection = (HttpURLConnection) grpeSarah.openConnection();
         //HttpURLConnection connection = (HttpURLConnection) grpeEdouard.openConnection();
         //Cryptage du mot ed passe
+        BufferedReader br;
+        if (200 <= connection.getResponseCode() && connection.getResponseCode() <= 299) {
+            br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        } else {
+            br = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+        }
         String mdp="";
         CryptageAes cAes = new CryptageAes();
         mdp = cAes.encrypt(mdp);
