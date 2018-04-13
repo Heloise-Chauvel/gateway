@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Enumeration;
 
 public class UserService {
 
@@ -16,6 +17,8 @@ public class UserService {
     public String createUser(Utilisateur user, HttpURLConnection connection){
         Gson gson = new Gson();
         //ClientBuilder.newClient().target("").request().post()
+        System.out.println("----user----");
+        System.out.println(user);
 
         //Serialiser user
         String jsonInString = gson.toJson(user);
@@ -23,19 +26,24 @@ public class UserService {
         //email : email etc...
 
         try {
-            String targetURL="";
             //Create connection
-            URL url = new URL(targetURL);
-            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type",
                     "application/json");
-
+            connection.setDoOutput(true);
             //Send request
             DataOutputStream wr = new DataOutputStream (
                     connection.getOutputStream());
             wr.writeBytes(jsonInString);
             wr.close();
+
+            //Headers
+            /*Enumeration headerNames = connection.getHeaderNames();
+            while (headerNames.hasMoreElements()) {
+                String key = (String) headerNames.nextElement();
+                String value = request.getHeader(key);
+                map.put(key, value);
+            }*/
 
             //Get Response
             InputStream is = connection.getInputStream();

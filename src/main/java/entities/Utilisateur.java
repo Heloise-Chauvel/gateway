@@ -14,6 +14,16 @@ public class Utilisateur implements Serializable {
         this.lastname = lastname;
     }
 
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
     public String getEmail() {
         return email;
     }

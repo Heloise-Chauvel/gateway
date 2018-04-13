@@ -20,18 +20,21 @@ import services.UserService;
 public class UserController {
 
     private UserService userService = new UserService();
-    private static String groupeSarah = "http://93c43331.ngrok.io/";
-
+    private static String groupeSarah = "http://93c43331.ngrok.io/register";
+    private static String groupeEdouard = "http://08004682.ngrok.io/user/create";
 
     @POST
     public Response createUser(Utilisateur user) throws MalformedURLException, IOException{
         URL grpeSarah = new URL(groupeSarah);
+        //URL grpeEdouard = new URL(groupeEdouard);
         HttpURLConnection connection = (HttpURLConnection) grpeSarah.openConnection();
+        //HttpURLConnection connection = (HttpURLConnection) grpeEdouard.openConnection();
         //Cryptage du mot ed passe
-        String mdp="";
-        user.setPassword(mdp);
-        userService.createUser(user, connection);
-        return Response.status(201).entity("ça marche").build();
+        //String mdp="";
+        //user.setPassword(mdp);
+        System.out.println("---Response de auth--");
+        System.out.println(userService.createUser(user, connection));
+        return Response.status(201).build();
     }
 
     @POST
