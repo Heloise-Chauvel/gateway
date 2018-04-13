@@ -9,7 +9,10 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 import entities.Utilisateur;
 import services.UserService;
@@ -20,12 +23,13 @@ import services.UserService;
 public class UserController {
 
     private UserService userService = new UserService();
-    String groupeSarah = "http://93c43331.ngrok.io";
+    private static String groupeSarah = "http://93c43331.ngrok.io/";
+
 
     @POST
-    public Response createUser(Utilisateur user){
-
-        HttpURLConnection connection = null;
+    public Response createUser(Utilisateur user) throws MalformedURLException{
+        URL groupeSarah = new URL("http://93c43331.ngrok.io/");
+        HttpURLConnection connection = new HttpURLConnection(groupeSarah);
         //Cryptage du mot ed passe
         String mdp="";
         user.setPassword(mdp);
