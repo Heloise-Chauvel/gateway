@@ -11,5 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.jboss.resteasy:resteasy-jaxrs:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.resteasy:resteasy-servlet-initializer:unknown" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:unknown" level="project" />
   </component>
 </module>
