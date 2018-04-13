@@ -8,4 +8,6 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class gateway {
 
+
+
 }
